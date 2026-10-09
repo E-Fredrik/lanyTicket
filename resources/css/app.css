@@ -1,0 +1,505 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+:root {
+    --ink: #171a2d;
+    --muted-ink: #66697b;
+    --night: #171a2d;
+    --night-soft: #252943;
+    --paper: #fbfaf7;
+    --line: #dedee3;
+    --lavender: #c9b9ff;
+    --coral: #ff8178;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--paper);
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+.ticket-page {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: minmax(360px, 0.94fr) minmax(520px, 1.06fr);
+}
+
+.event-panel {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 32px clamp(32px, 5vw, 76px) 38px;
+    color: var(--white);
+    background: var(--night);
+}
+
+.event-panel::before,
+.event-panel::after {
+    position: absolute;
+    border-radius: 999px;
+    content: "";
+    pointer-events: none;
+}
+
+.event-panel::before {
+    width: 440px;
+    height: 440px;
+    right: -210px;
+    top: -100px;
+    background: var(--coral);
+    opacity: 0.9;
+    filter: blur(1px);
+}
+
+.event-panel::after {
+    width: 380px;
+    height: 380px;
+    bottom: -180px;
+    left: -150px;
+    background: var(--lavender);
+    opacity: 0.74;
+}
+
+.site-nav,
+.event-content,
+.panel-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.site-nav,
+.panel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wordmark {
+    color: var(--white);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.09em;
+    text-decoration: none;
+}
+
+.wordmark span {
+    color: var(--coral);
+}
+
+.nav-note,
+.panel-footer {
+    color: #aeb0be;
+    font-size: 0.69rem;
+    letter-spacing: 0.08em;
+}
+
+.event-content {
+    max-width: 550px;
+    margin: auto 0;
+    padding: 12vh 0 11vh;
+}
+
+.eyebrow {
+    margin: 0 0 22px;
+    color: var(--coral);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    max-width: 550px;
+    margin-bottom: 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3.8rem, 7.4vw, 7.2rem);
+    font-weight: 400;
+    letter-spacing: -0.08em;
+    line-height: 0.82;
+}
+
+h1 em {
+    color: var(--lavender);
+    font-style: italic;
+}
+
+.event-intro {
+    max-width: 320px;
+    margin-bottom: 58px;
+    color: #c5c6d0;
+    font-size: 0.96rem;
+    line-height: 1.6;
+}
+
+.event-details {
+    display: flex;
+    gap: clamp(26px, 4vw, 52px);
+    border-top: 1px solid #4a4c60;
+    padding-top: 18px;
+}
+
+.event-details > div {
+    display: grid;
+    gap: 5px;
+}
+
+.detail-label {
+    color: #aeb0be;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+}
+
+.event-details strong {
+    color: var(--white);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.panel-footer {
+    justify-content: flex-start;
+    gap: 18px;
+}
+
+.panel-footer span:nth-child(2) {
+    color: var(--coral);
+    font-size: 0.8rem;
+}
+
+.form-panel {
+    display: flex;
+    justify-content: center;
+    padding: clamp(48px, 8vw, 112px) clamp(30px, 8vw, 126px);
+    background: var(--paper);
+}
+
+.form-panel > * {
+    width: min(100%, 560px);
+}
+
+.form-heading {
+    margin: auto 0 42px;
+}
+
+.form-heading .eyebrow {
+    color: #7561ba;
+    margin-bottom: 14px;
+}
+
+h2 {
+    margin-bottom: 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.7rem, 4.7vw, 4.7rem);
+    font-weight: 400;
+    letter-spacing: -0.07em;
+    line-height: 0.9;
+}
+
+.form-heading > p:last-child {
+    max-width: 420px;
+    margin-bottom: 0;
+    color: var(--muted-ink);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+form {
+    margin: 0 auto;
+}
+
+fieldset {
+    min-width: 0;
+    margin: 0 0 32px;
+    border: 0;
+    padding: 0;
+}
+
+legend,
+.field-group label {
+    display: block;
+    margin-bottom: 11px;
+    color: var(--ink);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.ticket-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.ticket-card input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.ticket-card-content {
+    display: grid;
+    min-height: 132px;
+    gap: 7px;
+    border: 1px solid var(--line);
+    padding: 18px;
+    transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.ticket-card:hover .ticket-card-content,
+.ticket-card input:focus-visible + .ticket-card-content {
+    border-color: #9786d7;
+}
+
+.ticket-card input:checked + .ticket-card-content {
+    border-color: var(--ink);
+    background: var(--night);
+    color: var(--white);
+}
+
+.ticket-name {
+    font-size: 0.9rem;
+    font-weight: 750;
+}
+
+.ticket-description {
+    color: var(--muted-ink);
+    font-size: 0.72rem;
+}
+
+.ticket-card input:checked + .ticket-card-content .ticket-description {
+    color: #bfc1cf;
+}
+
+.ticket-card strong {
+    align-self: end;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.ticket-card small {
+    color: var(--muted-ink);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.ticket-card input:checked + .ticket-card-content small {
+    color: var(--lavender);
+}
+
+.radio-mark {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    right: 16px;
+    top: 19px;
+    border: 1px solid #a6a7b1;
+    border-radius: 50%;
+}
+
+.ticket-card input:checked ~ .radio-mark {
+    border-color: var(--coral);
+    background: var(--coral);
+    box-shadow: inset 0 0 0 3px var(--night);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 14px;
+}
+
+.field-group {
+    margin-bottom: 23px;
+}
+
+input[type="email"],
+input[type="text"],
+select {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    outline: none;
+    padding: 0 14px;
+    color: var(--ink);
+    background: var(--white);
+    font-size: 0.83rem;
+}
+
+select {
+    cursor: pointer;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: #7561ba;
+    box-shadow: 0 0 0 3px #c9b9ff66;
+}
+
+input::placeholder {
+    color: #999ba5;
+}
+
+.check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 7px 0 29px;
+    cursor: pointer;
+    color: var(--muted-ink);
+    font-size: 0.72rem;
+    line-height: 1.45;
+}
+
+.check-row input {
+    position: absolute;
+    opacity: 0;
+}
+
+.check-box {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    border: 1px solid #a6a7b1;
+    background: var(--white);
+}
+
+.check-row input:focus-visible + .check-box {
+    outline: 3px solid #c9b9ff66;
+    outline-offset: 2px;
+}
+
+.check-row input:checked + .check-box {
+    border-color: var(--night);
+    background: var(--night);
+    box-shadow: inset 0 0 0 3px var(--white);
+}
+
+button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    padding: 17px 19px;
+    cursor: pointer;
+    color: var(--white);
+    background: var(--coral);
+    font-size: 0.8rem;
+    font-weight: 750;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+button:hover {
+    background: #ed7069;
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 3px solid #7561ba;
+    outline-offset: 3px;
+}
+
+.button-arrow {
+    font-size: 1.2rem;
+}
+
+.form-footnote {
+    margin: 13px 0 0;
+    color: #8a8b95;
+    font-size: 0.65rem;
+    line-height: 1.45;
+    text-align: center;
+}
+
+@media (max-width: 850px) {
+    .ticket-page {
+        display: block;
+    }
+
+    .event-panel {
+        min-height: 680px;
+    }
+
+    .form-panel {
+        min-height: 700px;
+        padding-top: 72px;
+        padding-bottom: 72px;
+    }
+}
+
+@media (max-width: 520px) {
+    .event-panel {
+        min-height: 620px;
+        padding: 24px 24px 28px;
+    }
+
+    .event-content {
+        padding: 11vh 0 8vh;
+    }
+
+    .event-details {
+        display: grid;
+        gap: 15px;
+    }
+
+    .form-panel {
+        padding: 58px 24px;
+    }
+
+    .ticket-grid,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: clamp(3.6rem, 18vw, 5rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
