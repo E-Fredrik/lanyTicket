@@ -27,3 +27,6 @@ Homestead.yaml
 Thumbs.db
 /.agents
 /.claude
+/.kiro
+/.pi
+/.grok
