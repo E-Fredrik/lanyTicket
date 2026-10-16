@@ -19,7 +19,7 @@
                 </nav>
 
                 <div class="event-content">
-                    <p class="eyebrow">The LANY world tour</p>
+                    <p class="eyebrow">LANY's world tour</p>
                     <h1 id="event-title">a beautiful<br><em>blur</em> of a night.</h1>
                     <p class="event-intro">One night of soft lights, loud hearts, and the songs that stay with you.</p>
 
@@ -29,7 +29,7 @@
                             <strong>Indoor Stadium</strong>
                         </div>
                         <div>
-                            <span class="detail-label">Friday, 18 October 2025</span>
+                            <span class="detail-label">Saturday, 17 October 2026</span>
                             <strong>Doors open 6:30 PM</strong>
                         </div>
                     </div>
