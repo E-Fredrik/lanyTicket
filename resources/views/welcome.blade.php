@@ -49,7 +49,7 @@
                     <p>Choose your seats and leave your details below. This is a frontend demo, so no payment will be processed.</p>
                 </div>
 
-                <form action="#" method="post">
+                <form action="{{ route('registrations.store') }}" method="post">
                     @csrf
 
                     <fieldset class="ticket-options">
