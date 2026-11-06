@@ -19,7 +19,7 @@
                 </nav>
 
                 <div class="event-content">
-                    <p class="eyebrow">LANY's world tour</p>
+                    <p class="eyebrow">LANY's ASIA tour</p>
                     <h1 id="event-title">a beautiful<br><em>blur</em> of a night.</h1>
                     <p class="event-intro">One night of soft lights, loud hearts, and the songs that stay with you.</p>
 
