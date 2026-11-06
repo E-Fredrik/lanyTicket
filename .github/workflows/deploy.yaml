@@ -116,12 +116,14 @@ jobs:
 
       - name: Create deployment package
         run: |
+          PACKAGE="/tmp/lany-ticket-${GITHUB_SHA}.tar.gz"
           tar \
             --exclude='./.git' \
             --exclude='./.env' \
             --exclude='./node_modules' \
             --exclude='./storage' \
-            -czf deploy.tar.gz .
+            -czf "$PACKAGE" .
+          test -s "$PACKAGE"
 
       - name: Configure SSH
         env:
@@ -147,7 +149,7 @@ jobs:
             -P "$VPS_PORT" \
             -o BatchMode=yes \
             -o StrictHostKeyChecking=yes \
-            deploy.tar.gz \
+            "/tmp/lany-ticket-${{ github.sha }}.tar.gz" \
             "$VPS_SSH_USER@$VPS_HOST:/tmp/lany-ticket-${{ github.sha }}.tar.gz"
 
       - name: Extract and activate deployment
