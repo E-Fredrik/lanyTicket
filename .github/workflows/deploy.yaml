@@ -121,7 +121,7 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         source: "vendor.tar.gz"
-        target: "/home/hgalih-arielnoah/htdocs/arielnoah.hgalih.my.id"
+        target: "/home/ked-lany/htdocs/lany.ked.my.id/public"
 
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.2.5
