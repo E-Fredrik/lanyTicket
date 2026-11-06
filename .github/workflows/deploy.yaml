@@ -130,8 +130,14 @@ jobs:
           VPS_DEPLOY_KEY: ${{ secrets.VPS_DEPLOY_KEY }}
           VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
         run: |
-          test -n "$VPS_DEPLOY_KEY"
-          test -n "$VPS_KNOWN_HOSTS"
+          if [ -z "$VPS_DEPLOY_KEY" ]; then
+            echo "::error::Missing GitHub Actions secret VPS_DEPLOY_KEY"
+            exit 1
+          fi
+          if [ -z "$VPS_KNOWN_HOSTS" ]; then
+            echo "::error::Missing GitHub Actions secret VPS_KNOWN_HOSTS"
+            exit 1
+          fi
           install -m 700 -d "$HOME/.ssh"
           printf '%s\n' "$VPS_DEPLOY_KEY" > "$HOME/.ssh/deploy_key"
           printf '%s\n' "$VPS_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
